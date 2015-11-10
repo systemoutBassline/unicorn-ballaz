@@ -5,10 +5,12 @@
  */
 package unicornballaz.model;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 
 /**
  *
@@ -35,5 +37,13 @@ public class DBHandler {
 
     public void closeConnection() {
         em.close();
+    }
+    
+    public List<Products> getListFromDB() {
+        openConnection();
+        Query q = em.createQuery("SELECT p FROM Products p");
+        List<Products> list = q.getResultList();
+        closeConnection();
+        return list;
     }
 }
