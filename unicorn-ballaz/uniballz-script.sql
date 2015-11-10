@@ -1,7 +1,7 @@
-create table unicorn.users (
-    id INTEGER PRIMARY KEY,
-    username varchar(256) NOT NULL,
-    password varchar(256) NOT NULL
-);
+-- create table unicorn.users (
+--     id INTEGER PRIMARY KEY,
+--     username varchar(256) NOT NULL,
+--     password varchar(256) NOT NULL
+-- );
 
-insert into unicorn.users values (1,Jdmin,pass);
+insert into users values (0, 'Cdmin', 'pass');
