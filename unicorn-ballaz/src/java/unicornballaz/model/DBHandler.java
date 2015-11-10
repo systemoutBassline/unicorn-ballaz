@@ -28,7 +28,6 @@ public class DBHandler {
         try {
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
             em = factory.createEntityManager();
-
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
