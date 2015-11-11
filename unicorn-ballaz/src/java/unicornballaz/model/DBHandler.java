@@ -23,7 +23,7 @@ public class DBHandler {
     private EntityManager em;
 
     public DBHandler() {
-
+        
     }
 
     public void openConnection() {

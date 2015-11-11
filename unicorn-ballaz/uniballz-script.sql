@@ -1,19 +1,27 @@
+-- drop table unicorn.users;
 -- create table unicorn.users (
---     id INTEGER PRIMARY KEY,
+--     userid INT PRIMARY KEY,
 --     username varchar(256) NOT NULL,
 --     password varchar(256) NOT NULL
 -- );
 
+-- drop table unicorn.products;
 -- create table unicorn.products (
---     id INTEGER PRIMARY KEY,
+--     productid INT PRIMARY KEY,
 --     productname varchar(256) NOT NULL,
 --     description varchar(256) NOT NULL,
 --     ranking INTEGER NOT NULL
 -- );
+insert into unicorn.products values(
+    2,
+    'Product 3',
+    'This is the text that describes _Product 3_. Hopefully something usefull can be read here.',
+    0
+);
 
 -- drop table unicorn.reviews;
 -- create table unicorn.reviews (
---     id INTEGER PRIMARY KEY,
+--     reviewid INT PRIMARY KEY,
 --     productid varchar(256) NOT NULL,
 --     userid INTEGER NOT NULL,
 --     ranking INTEGER NOT NULL,

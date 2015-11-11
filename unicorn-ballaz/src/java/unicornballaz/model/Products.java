@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Products.findAll", query = "SELECT p FROM Products p"),
-    @NamedQuery(name = "Products.findById", query = "SELECT p FROM Products p WHERE p.id = :id"),
+    @NamedQuery(name = "Products.findByProductid", query = "SELECT p FROM Products p WHERE p.productid = :productid"),
     @NamedQuery(name = "Products.findByProductname", query = "SELECT p FROM Products p WHERE p.productname = :productname"),
     @NamedQuery(name = "Products.findByDescription", query = "SELECT p FROM Products p WHERE p.description = :description"),
     @NamedQuery(name = "Products.findByRanking", query = "SELECT p FROM Products p WHERE p.ranking = :ranking")})
@@ -35,8 +35,8 @@ public class Products implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID")
-    private Integer id;
+    @Column(name = "PRODUCTID")
+    private Integer productid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
@@ -55,23 +55,23 @@ public class Products implements Serializable {
     public Products() {
     }
 
-    public Products(Integer id) {
-        this.id = id;
+    public Products(Integer productid) {
+        this.productid = productid;
     }
 
-    public Products(Integer id, String productname, String description, int ranking) {
-        this.id = id;
+    public Products(Integer productid, String productname, String description, int ranking) {
+        this.productid = productid;
         this.productname = productname;
         this.description = description;
         this.ranking = ranking;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getProductid() {
+        return productid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProductid(Integer productid) {
+        this.productid = productid;
     }
 
     public String getProductname() {
@@ -101,7 +101,7 @@ public class Products implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (productid != null ? productid.hashCode() : 0);
         return hash;
     }
 
@@ -112,7 +112,7 @@ public class Products implements Serializable {
             return false;
         }
         Products other = (Products) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.productid == null && other.productid != null) || (this.productid != null && !this.productid.equals(other.productid))) {
             return false;
         }
         return true;
@@ -120,7 +120,7 @@ public class Products implements Serializable {
 
     @Override
     public String toString() {
-        return "unicornballaz.model.Products[ id=" + id + " ]";
+        return "unicornballaz.model.Products[ productid=" + productid + " ]";
     }
     
 }

@@ -22,21 +22,20 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Joel
  */
 @Entity
-@Table(name = "USERS", schema = "UNICORN")
+@Table(name = "USERS")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
-    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
+    @NamedQuery(name = "Users.findByUserid", query = "SELECT u FROM Users u WHERE u.userid = :userid"),
     @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
 public class Users implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID")
-    private Integer id;
+    @Column(name = "USERID")
+    private Integer userid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
@@ -51,18 +50,22 @@ public class Users implements Serializable {
     public Users() {
     }
 
-    public Users(Integer id) {
-        this.id = id;
+    public Users(Integer userid) {
+        this.userid = userid;
     }
 
-    public Users(Integer id, String username, String password) {
-        this.id = id;
+    public Users(Integer userid, String username, String password) {
+        this.userid = userid;
         this.username = username;
         this.password = password;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -84,7 +87,7 @@ public class Users implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (userid != null ? userid.hashCode() : 0);
         return hash;
     }
 
@@ -95,7 +98,7 @@ public class Users implements Serializable {
             return false;
         }
         Users other = (Users) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.userid == null && other.userid != null) || (this.userid != null && !this.userid.equals(other.userid))) {
             return false;
         }
         return true;
@@ -103,7 +106,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "unicornballaz.model.Users[ id=" + id + " ]";
+        return "unicornballaz.model.Users[ userid=" + userid + " ]";
     }
-
+    
 }

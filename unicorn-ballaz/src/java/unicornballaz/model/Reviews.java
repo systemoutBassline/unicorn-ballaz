@@ -26,18 +26,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Reviews.findAll", query = "SELECT r FROM Reviews r"),
-    @NamedQuery(name = "Reviews.findById", query = "SELECT r FROM Reviews r WHERE r.id = :id"),
+    @NamedQuery(name = "Reviews.findByReviewid", query = "SELECT r FROM Reviews r WHERE r.reviewid = :reviewid"),
     @NamedQuery(name = "Reviews.findByProductid", query = "SELECT r FROM Reviews r WHERE r.productid = :productid"),
     @NamedQuery(name = "Reviews.findByUserid", query = "SELECT r FROM Reviews r WHERE r.userid = :userid"),
     @NamedQuery(name = "Reviews.findByRanking", query = "SELECT r FROM Reviews r WHERE r.ranking = :ranking"),
+    @NamedQuery(name = "Reviews.findByReviewheadline", query = "SELECT r FROM Reviews r WHERE r.reviewheadline = :reviewheadline"),
     @NamedQuery(name = "Reviews.findByReview", query = "SELECT r FROM Reviews r WHERE r.review = :review")})
 public class Reviews implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID")
-    private Integer id;
+    @Column(name = "REVIEWID")
+    private Integer reviewid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
@@ -53,6 +54,11 @@ public class Reviews implements Serializable {
     private int ranking;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 256)
+    @Column(name = "REVIEWHEADLINE")
+    private String reviewheadline;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 512)
     @Column(name = "REVIEW")
     private String review;
@@ -60,24 +66,25 @@ public class Reviews implements Serializable {
     public Reviews() {
     }
 
-    public Reviews(Integer id) {
-        this.id = id;
+    public Reviews(Integer reviewid) {
+        this.reviewid = reviewid;
     }
 
-    public Reviews(Integer id, String productid, int userid, int ranking, String review) {
-        this.id = id;
+    public Reviews(Integer reviewid, String productid, int userid, int ranking, String reviewheadline, String review) {
+        this.reviewid = reviewid;
         this.productid = productid;
         this.userid = userid;
         this.ranking = ranking;
+        this.reviewheadline = reviewheadline;
         this.review = review;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getReviewid() {
+        return reviewid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setReviewid(Integer reviewid) {
+        this.reviewid = reviewid;
     }
 
     public String getProductid() {
@@ -104,6 +111,14 @@ public class Reviews implements Serializable {
         this.ranking = ranking;
     }
 
+    public String getReviewheadline() {
+        return reviewheadline;
+    }
+
+    public void setReviewheadline(String reviewheadline) {
+        this.reviewheadline = reviewheadline;
+    }
+
     public String getReview() {
         return review;
     }
@@ -115,7 +130,7 @@ public class Reviews implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (reviewid != null ? reviewid.hashCode() : 0);
         return hash;
     }
 
@@ -126,7 +141,7 @@ public class Reviews implements Serializable {
             return false;
         }
         Reviews other = (Reviews) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.reviewid == null && other.reviewid != null) || (this.reviewid != null && !this.reviewid.equals(other.reviewid))) {
             return false;
         }
         return true;
@@ -134,7 +149,7 @@ public class Reviews implements Serializable {
 
     @Override
     public String toString() {
-        return "unicornballaz.model.Reviews[ id=" + id + " ]";
+        return "unicornballaz.model.Reviews[ reviewid=" + reviewid + " ]";
     }
     
 }
