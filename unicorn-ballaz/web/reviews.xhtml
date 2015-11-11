@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <!-- @Autor: Charlotte -->
+    <h:head>
+        <link href="css/unicornlayout.css" rel="stylesheet" type="text/css"></link>
+        <title>Reviews</title>
+    </h:head>
+    <h:body>
+        <center><h1>Reviews for Product 1</h1></center>
+        <form name="login" action="ReviewServlet" method="post" onsubmit="checks(this)">
+            <center><div style="border: 1px solid; width: 500px; height: 350px; box-shadow: 2px 2px 4px 1px #000000;">
+                    <table class="table1">
+                        <tr>
+                            <td><p>Headline:</p> </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="headline"></input></td>
+                        </tr>
+                        <tr>
+                            <td><p>Review:</p> </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 10px;"><textarea name="review"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit" value="Submit">SUBMIT</button> <button type="reset">RESET</button></td>
+                        </tr>
+                    </table>
+                </div></center>
+        </form>
+    </h:body>
+</html>

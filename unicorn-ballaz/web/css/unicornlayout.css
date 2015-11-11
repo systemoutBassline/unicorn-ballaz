@@ -8,9 +8,11 @@ and open the template in the editor.
     Author     : Charlotte
 */
 
+<style>
+
 body {
     color: black;
-    text-family: "Trebuchet MS";
+    font-family: "Trebuchet MS";
 }
 
 h1 {
@@ -28,6 +30,13 @@ h2 {
     text-shadow: 2px 2px #b5cbc5;
     font-family: "Trebuchet MS";
     float: center;
+}
+
+p {
+    font-family: "Trebuchet MS";
+    color: black;
+    font-size: 16px;
+    text-shadow: 1px 1px #b5cbc5;
 }
 
 button {
@@ -48,7 +57,26 @@ table {
     margin: auto;
     float: center;
     text-align: center;
+}
 
+
+.table1 {
+    font-family: "Trebuchet MS";
+    color: #000000;
+    padding: 10px;
+    margin: auto;
+    float: left;
+    text-align: left;
+}
+
+textarea{
+    width: 300px;
+    height: 120px;
+    border: 2px solid #cccccc;
+    padding: 5px;
+    font-family: "Trebuchet MS";
+    background-position: bottom right;
+    background-repeat: no-repeat;
 }
 
 
@@ -81,4 +109,64 @@ input[type="password"]:focus {
     transition: border 0.3s;
 }
 
-textarea, input { outline: none; }
+textarea, input {
+    outline: none;
+}
+
+.mainbox1 {
+    border: 0;
+    width: 600px;
+}
+
+.main {
+    width: 600px;
+    margin: auto;
+    float: left;
+    padding: 10px;
+}
+
+.navbar {
+    float: left;
+}
+
+.navbar:li {
+    float: left;
+}
+
+.navbar:ul {
+    height: 50px;
+    width: 100px;
+    padding: 5px;
+    float: left;
+    /* Ensures that the menu doesn’t affect other elements */
+    border-right: 1px solid #ffffff;
+}
+
+.navcontainer {
+    width: 900px;
+    margin: 5;
+    padding: 5;
+    list-style-type: none;
+    float: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: "Trebuchet Ms";
+}
+
+a:hover { 
+    color: gray;
+}
+
+li {
+    padding: 10px;
+    list-style: none;
+    text-align: left;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    transition: border 0.3s;
+}
+
+</style>
