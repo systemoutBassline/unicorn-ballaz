@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Joel
  */
 @Entity
-@Table(name = "USERS")
+@Table(name = "USERS", schema = "UNICORN")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
@@ -56,6 +56,11 @@ public class Users implements Serializable {
 
     public Users(Integer userid, String username, String password) {
         this.userid = userid;
+        this.username = username;
+        this.password = password;
+    }
+    
+    public Users(String username, String password) {
         this.username = username;
         this.password = password;
     }

@@ -5,13 +5,17 @@
  */
 package unicornballaz.controller;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import unicornballaz.model.DBHandler;
 
 /**
  *
@@ -72,9 +76,28 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        
+        HttpSession session = request.getSession();
 
+		DBHandler dbH = new DBHandler();
+
+		session.setMaxInactiveInterval(10080 * 60);
+
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+
+		try {
+			if (dbH.checkLogin(username, password)) {
+				session.setAttribute("username", username);
+				response.sendRedirect("index.xhtml");
+			} else {
+				response.sendRedirect("index.xhtml");
+			}
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+	}
+    
     /**
      * Returns a short description of the servlet.
      *
